@@ -1,0 +1,44 @@
+@media print {
+    .col-sm-1,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9,
+    .col-sm-10,
+    .col-sm-11,
+    .col-sm-12 {
+        float: none;
+        width: 100%;
+        margin-top: 1in;
+    }
+
+}
+@media print{@page {size: landscape}}
+@media print and (width: 21cm) and (height: 29.7cm) {
+     @page {
+        margin: 3cm;
+        
+     }
+}
+
+@media screen {
+    .col-sm-1,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9,
+    .col-sm-10,
+    .col-sm-11,
+    .col-sm-12 {
+        float: none;
+        width: 100%;
+    }
+}

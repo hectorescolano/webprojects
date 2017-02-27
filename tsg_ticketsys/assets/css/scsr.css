@@ -1,0 +1,58 @@
+table {
+	    border-collapse: collapse;
+	    width: 100%;
+	}
+
+	table, td, th {
+	    /*border: 1px solid #ddd;*/
+	    font-style: verdana;
+	}
+	td {
+		height: auto;
+		vertical-align: middle;
+		text-align: center;
+	}
+	td > img {
+		max-width: 80px;
+		max-height: 80px;
+	}
+	table.headerTable {
+		border-bottom: 3px solid #000;
+	}
+
+
+	table.headerTableB{
+		border: 1px solid #000;
+	}
+
+	table.deceasedTableA {
+		border-left: 1px solid #000;
+		border-right: 1px solid #000;
+		border-bottom: 1px solid #000;
+	}
+	table.deceasedTableB, table.deceasedTableB * {
+		border: 1px solid #000;
+	}
+	table.deceasedTableC, table.claimantTable, table.socialWorkerTable {
+		border: 1px solid #000;
+	}
+	
+	input.transparentInput{
+		/*display: block;*/
+		border: none;
+		width: 100%;
+		text-align: center;
+		font-size: 16px;
+	}
+	select.transparentInput{
+		-webkit-appearance: button;
+        -webkit-user-select: none;
+		  border: none;
+		  color: #000;
+		  /*margin: 0;*/
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+		  white-space: nowrap;
+		  width: 80%;
+		  font-size: 16px;
+	}

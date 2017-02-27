@@ -1,0 +1,73 @@
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+table, td {
+    font-style: verdana;
+}
+td {
+	height: auto;
+}
+td > img {
+	max-width: 70px;
+	max-height: 70px;
+}
+
+.cert_img{
+	max-width: 90px;
+	max-height: 90px;
+}
+
+input.transparent{
+	border:none;
+	font-size: 16px;
+	width: 100%;
+}
+
+span.mop{
+	margin-left: 10%;
+}
+
+
+span input[type='radio']{
+	margin-left: 50px;
+}
+
+span.jev_type > *{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+select.transparentInput{
+	-webkit-appearance: button;
+    -webkit-user-select: none;
+	  border: none;
+	  color: #000;
+	  /*margin: 0;*/
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  white-space: nowrap;
+	  width: 80%;
+	  font-size: 16px;
+}
+
+.border-all{
+	border:1px solid #000;
+}
+
+.border-notop{
+	border-bottom:solid;border-left:solid;border-right:solid;border-width:1px;border-color:#000;
+}
+.border-notopbot{
+	border-left:solid;border-right:solid;border-width:1px;border-color:#000;
+}
+
+.border-right{
+	border-right: 1px solid #000;
+}
+.border-left{
+	border-left: 1px solid #000;
+}
+.border-bottom{
+	border-bottom: 1px solid #000;
+}
