@@ -13,15 +13,17 @@
         <?php
         if ($loggedUserDetails['role'] != 1) {
             ?>
-            <li><a href="#tabs-3">Reports</a></li>
-            
+            <li><a href="#tabs-3">Ticket Summary Report</a></li>
+            <li><a href="#tabs-6">Accomplishment Report</a></li>
         <?php } ?>
         <?php
         if ($loggedUserDetails['role'] == 4) {
             ?>
             <li><a href="#tabs-5">Ticket Details</a></li>
+
             <li><a href="#tabs-4">Accounts</a></li>
         <?php } ?>
+
     </ul>
     <div id="tabs-1" class="table-responsive">
         <p><h2>Request Ticket List</h2></p>
@@ -246,7 +248,7 @@
 
         <!-- REPORTS  -->
         <div id="tabs-3" class="table-responsive" style="font-size: 90%;">
-            <p><h2>Report</h2></p>
+            <p><h2>Ticket Summary Report</h2></p>
             <hr>
             <blockquote>
                 <p class='text-danger'><strong>Note: Only Date input fields are required.</strong></p>
@@ -292,7 +294,7 @@
                             <?php
                             if (isset($available_techs)) {
                                 foreach ($available_techs as $tech) {
-                                    echo "<option value='$tech->user_id'>".$tech->user_lname.", ".$tech->user_fname."</option>";
+                                    echo "<option value='$tech->user_id'>" . $tech->user_lname . ", " . $tech->user_fname . "</option>";
                                 }
                             }
                             ?>
@@ -309,6 +311,44 @@
 
             </div>
             </p>
+        </div>
+        <!-- ACCOMPLISHMENT REPORT -->
+        <div id="tabs-6" class="table-responsive" style="font-size: 90%;">
+            <p><h2>Accomplishment Report</h2></p>
+            <hr>
+            <blockquote>
+                <p class='text-danger'><strong>Note: All input fields are required.</strong></p>
+            </blockquote>
+            <p>
+            <form id='newACReportForm' class="form-inline" method="post">
+                <div class="form-group">
+                    <label for="ac_datefrom">Date From:</label>
+                    <input name="ac_report[DATE_FROM]" type="text" class="form-control dr" id="ac_datefrom" required="">
+                </div>
+                <div class="form-group">
+                    <label for="ac_dateto">Date To:</label>
+                    <input name="ac_report[DATE_TO]" type="text" class="form-control dr" id="ac_dateto" required="">
+                </div>
+                <div class="form-group">
+                    <label for="ac_technicians">Tech:</label>
+                    <select name='ac_report[tech]' class="form-control" id="ac_technicians" required="">
+                        <option value="">Select tech</option>
+                        <?php
+                        if (isset($available_techs)) {
+                            foreach ($available_techs as $tech) {
+                                echo "<option value='$tech->user_id'>" . $tech->user_lname . ", " . $tech->user_fname . "</option>";
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+                <button id="btnViewAcReport" type="button" class="btn btn-primary">View Report</button>
+                <button type="reset" class="btn btn-default">Clear</button>
+            </form>
+
+            <div id="acrFormResult">
+
+            </div>
         </div>
     <?php } ?>
     <?php
@@ -474,15 +514,15 @@
             <div id="ticketDetailsForm" class="form-inline">
                 <div class="form-group">
                     <label for="ticket_ids">Ticket ID:</label>
-<!--                    <select class="form-control" id="ticket_details_no">
+    <!--                    <select class="form-control" id="ticket_details_no">
                         <option value="">Select here</option>
-                        <?php
+                    <?php
 //                        if (isset($ticket_details_list)) {
 //                            foreach ($ticket_details_list as $ticket) {
 //                                echo "<option value='$ticket->TKT_NO'>$ticket->TKT_NO</option>";
 //                            }
 //                        }
-                        ?>
+                    ?>
                     </select>-->
                     <input class="form-control" type="text" id="ticket_details_no" placeholder="Enter ticket id">
                     <div class="form-group">

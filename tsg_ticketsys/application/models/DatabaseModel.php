@@ -13,6 +13,11 @@ class DatabaseModel extends CI_Model {
         $res = $this->db->query($sql, $code);
         return $res->result();
     }
+    
+    public function getACreport($from,$to,$tech){
+        
+        
+    }
 
     public function getAllTechnician() {
         $sql = "select * from TB_USERS where user_type = 2";
@@ -20,14 +25,7 @@ class DatabaseModel extends CI_Model {
         return $res->result();
     }
 
-    public function deleteFromCertListById($id) {
-//        $sql = "DELETE FROM Certification WHERE EMPLOYEEID = ?";
-//        $res = $this->db->query($sql,$id);
-//        return $res->result();
-        $this->db->where('EMPLOYEEID', $id);
-        $this->db->delete('Certification');
-        return $this->db->affected_rows();
-    }
+ 
 
     public function getTicketStatus() {
         $sql = "SELECT * FROM TB_TICKET_STATUS ORDER BY sort_no ASC";
@@ -42,50 +40,10 @@ class DatabaseModel extends CI_Model {
         return $res->result();
     }
 
-    public function getFundAdmin() {
-        $sql = "SELECT * FROM dbo.RPT_SIGNATORIES_DETAIL WHERE sequence_no = 2";
-        $res = $this->db->query($sql);
-        return $res->result();
-    }
 
-    public function getDeptHead($deptcode, $offcode) {
 
-        if (isset($offcode) && $offcode != 0) {
-            $sql = "SELECT [OIC] AS head, [position] AS post FROM MST_OFFICE WHERE department_code = ? AND sys_suboffice_code = ?";
-            $data = array($deptcode, $offcode);
-        } else {
-            if ($offcode == 0) {
-                $sql = "SELECT [dept_head] AS head,[position_title] AS post FROM MST_DEPARTMENT WHERE department_code = ?";
-                $data = array($deptcode);
-            }
-        }
-        $res = $this->db->query($sql, $data);
-        return $res->result();
-    }
 
-    public function getContractType($account_code, $dept_code) {
 
-        $sql = "SELECT DISTINCT department_code, contract_type,account_code FROM trx_ppmp_detail WHERE department_code = ? AND account_code = ?";
-        $data = array($dept_code, $account_code);
-        $res = $this->db->query($sql, $data);
-        return $res->result();
-    }
-
-    public function getPPMPreport($year, $dept, $off, $acct) {
-
-        $sql = "EXEC dbo.spppmp ?,?,?,?";
-        $data = array($year, $dept, $off, $acct);
-        $res = $this->db->query($sql, $data);
-        return $res->result();
-    }
-
-    public function getPPMPreport2($year, $dept, $off, $acct) {
-
-        $sql = "EXEC dbo.spnewppmp ?,?,?,?";
-        $data = array($year, $dept, $off, $acct);
-        $res = $this->db->query($sql, $data);
-        return $res->result();
-    }
 
     public function getUserDeptByAddress($address) {
         $sql = "SELECT dbo.MST_DEPARTMENT.description AS Dept,dbo.MST_DEPARTMENT.department_code FROM dbo.MST_DEPARTMENT WHERE (department_code = ?)";
@@ -136,22 +94,8 @@ class DatabaseModel extends CI_Model {
         return $res->result();
     }
 
-    public function getUserAccountCode($username, $offcode) {
-        $sql = "SELECT DISTINCT dbo.TRX_PPMP_DETAIL.account_code FROM dbo.TRX_PPMP_DETAIL INNER JOIN
-                dbo.USER_MASTER ON dbo.TRX_PPMP_DETAIL.sys_suboffice_code = dbo.USER_MASTER.sys_suboffice_code
-                WHERE (dbo.USER_MASTER.sys_suboffice_code = ?) AND (dbo.USER_MASTER.user_name = ?) 
-                AND (YEAR(dbo.TRX_PPMP_DETAIL.trx_year) > YEAR(DATEADD(YEAR, - 2, GETDATE())))";
-        $data = array($offcode, $username);
-        $res = $this->db->query($sql, $data);
-        return $res->result();
-    }
 
-    public function getUserAccountCodeByDeptCode($address) {
-        $sql = "SELECT DISTINCT account_code FROM dbo.TRX_PPMP_DETAIL WHERE  (YEAR(dbo.TRX_PPMP_DETAIL.trx_year) > YEAR(DATEADD(YEAR, - 2, GETDATE()))) AND (department_code = ?)";
-        $data = array($address);
-        $res = $this->db->query($sql, $data);
-        return $res->result();
-    }
+
 
     public function getSP_GetSumReport($datefrm, $dateto, $brgy, $dist, $stat) {
 

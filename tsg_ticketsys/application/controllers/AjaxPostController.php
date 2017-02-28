@@ -106,6 +106,20 @@ class AjaxPostController extends MY_Controller {
         }
         
     }
+    
+    public function get_ac_report(){
+        $datefrom = $this->input->post('datefrom');
+        $dateto = $this->input->post('dateto');
+        $tech = $this->input->post('tech');
+        
+        $ac_report_rs = $this->DatabaseModel->getACreport($datefrom,$dateto,$tech);
+        if(!empty($ac_report_rs)){
+             echo json_encode($ac_report_rs);
+        } else {
+            echo json_encode('');
+        }
+        
+    }
 
     public function update_ticket_workhist() {
         $data = array();

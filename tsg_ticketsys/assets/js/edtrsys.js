@@ -29,6 +29,41 @@ $(function () {
     var ticket_details_no = $("#ticket_details_no");
     var ticketDetailsResult = $("#ticketDetailsResult");
 
+    var ac_datefrom = $("#ac_datefrom");
+    var ac_dateto = $("#ac_dateto");
+    var ac_technicians = $("#ac_technicians");
+    var btnViewAcReport = $("#btnViewAcReport");
+
+
+
+    btnViewAcReport.click(function () 
+    {
+        if (ac_datefrom.val().length > 0 && 
+            ac_dateto.val().length > 0 && 
+            ac_technicians.val().lenth > 0) {
+        
+            $.ajax({
+                type: "post",
+                url: $("#burls").val() + "/AjaxPOstController/get_ac_report",
+                dataType: 'json',
+                data:{datefrom: ac_datefrom.val(),dateto: ac_dateto.val(),tech:ac_technicians.val()},
+                success: function(res){
+                    var content = "";
+                    if (res || res.length > 0) {
+                        
+                    } else {
+                        
+                    }
+                    
+                }
+            });
+
+        } else {
+            alert("Check all fields are filled.");
+        }
+    });
+
+
     viewTicketDetailBtn.click(function () {
         //lert(ticket_details_no.val());
 
